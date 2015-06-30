@@ -7,14 +7,8 @@ from flask.ext.script import Manager, Server
 application = create_app(
     os.getenv('DM_ENVIRONMENT') or 'development'
 )
-application.jinja_options = {
-    'extensions': [
-        'jinja2.ext.with_'
-    ]
-}
-
 manager = Manager(application)
-manager.add_command("runserver", Server(port=5003))
+manager.add_command("runserver", Server(host="0.0.0.0", port=8888))
 
 if __name__ == '__main__':
     manager.run()
