@@ -2,6 +2,6 @@ hooks:
   build:
   - scripts/build.sh
 healthcheck:
-  path: /_status
+  path: suppliers/_status
   method: GET
   status: 200 
