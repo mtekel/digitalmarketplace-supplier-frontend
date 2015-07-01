@@ -11,3 +11,6 @@ requests==2.5.1
 pyOpenSSL==0.14
 ndg-httpsclient==0.3.3
 pyasn1==0.1.7
+
+# Gunicorn
+gunicorn==19.3.0
