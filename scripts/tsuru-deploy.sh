@@ -7,6 +7,6 @@ DM_DATA_API_URL=https://digitalmarketplace-api-ci.tsuru2.paas.alphagov.co.uk \
 DM_MANDRILL_API_KEY=somekey \
 DM_PASSWORD_SECRET_KEY=verySecretKey \
 DM_S3_DOCUMENT_BUCKET=admin-frontend-dev-documents \
-DM_SEARCH_API_AUTH_TOKEN=CHbDLQtMvKoAuAtT8GM6vrdGGC \
-DM_SEARCH_API_URL=https://preview-search-api.development.digitalmarketplace.service.gov.uk
+DM_SEARCH_API_AUTH_TOKEN=oursearchtoken \
+DM_SEARCH_API_URL=https://digitalmarketplace-search-api-ci.tsuru.paas.alphagov.co.uk
 tsuru app-deploy *
