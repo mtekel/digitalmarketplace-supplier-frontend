@@ -1,5 +1,7 @@
 {% extends "_base_page.html" %}
 
+{% block page_title %}{{current_user.supplier_name}} – Digital Marketplace{% endblock %}
+
 {% block breadcrumb %}
   {%
     with items = [
@@ -24,14 +26,27 @@
       {% endwith %}
     </div>
   </div>
-
   <div class="grid-row">
     <div class="column-one-whole">
-      <h2 class="summary-item-heading">Services</h2>
+
+      {% if 'GCLOUD7_OPEN' is active_feature %}
+        {%
+          with
+          items = [{
+            "title": "Apply to become a G-Cloud 7 supplier and add services",
+            "link": url_for(".framework_dashboard"),
+            "body": "G-Cloud 7 is open for applications until 1 October 2015"
+          }]
+        %}
+          {% include "toolkit/browse-list.html" %}
+        {% endwith %}
+      {% endif %}
+
+      <h2 class="summary-item-heading">Current services</h2>
+      {% if supplier.service_counts %}
       <p class="summary-item-top-level-action">
         <a href="{{ url_for('.list_services') }}">View</a>
       </p>
-      {% if supplier.service_counts %}
       <table class="summary-item-body">
         <thead></thead>
         <tbody class="summary-item-body">
@@ -47,6 +62,10 @@
           {% endfor %}
         </tbody>
       </table>
+      {% else %}
+      <p class="hint summary-item-no-content">
+        You don't have any services on the Digital Marketplace
+      </p>
       {% endif %}
     </div>
   </div>

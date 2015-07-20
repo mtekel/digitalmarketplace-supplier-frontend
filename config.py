@@ -81,17 +81,38 @@ class Development(Config):
     FEATURE_FLAGS_GCLOUD7_OPEN = enabled_since('2015-06-18')
 
 
+class Preview(Config):
+    FEATURE_FLAGS_EDIT_SERVICE_PAGE = enabled_since('2015-06-03')
+    FEATURE_FLAGS_SUPPLIER_DASHBOARD = enabled_since('2015-06-10')
+    FEATURE_FLAGS_EDIT_SUPPLIER_PAGE = enabled_since('2015-06-18')
+    FEATURE_FLAGS_GCLOUD7_OPEN = enabled_since('2015-06-18')
+    FEATURE_FLAGS_CREATE_SERVICE_PAGE = enabled_since('2015-06-18')
+
+
 class Live(Config):
     DEBUG = False
     DM_HTTP_PROTO = 'https'
 
+    FEATURE_FLAGS_EDIT_SERVICE_PAGE = enabled_since('2015-07-02')
     FEATURE_FLAGS_SUPPLIER_DASHBOARD = enabled_since('2015-06-18')
+
+
+class Staging(Config):
+    DEBUG = False
+    WTF_CSRF_ENABLED = False
+    DM_HTTP_PROTO = 'https'
+
+    FEATURE_FLAGS_EDIT_SERVICE_PAGE = enabled_since('2015-07-13')
+    FEATURE_FLAGS_SUPPLIER_DASHBOARD = enabled_since('2015-07-13')
+    FEATURE_FLAGS_EDIT_SUPPLIER_PAGE = enabled_since('2015-07-13')
+    FEATURE_FLAGS_GCLOUD7_OPEN = enabled_since('2015-07-13')
+    FEATURE_FLAGS_CREATE_SERVICE_PAGE = enabled_since('2015-07-13')
 
 
 configs = {
     'development': Development,
-    'preview': Live,
-    'staging': Live,
+    'preview': Preview,
+    'staging': Staging,
     'production': Live,
     'test': Test,
 }

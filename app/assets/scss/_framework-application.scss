@@ -1,0 +1,17 @@
+.framework-deadline {
+  padding-left: $gutter-half;
+  border-left: solid 5px $error-colour;
+  margin-bottom: $gutter;
+
+  .framework-notification {
+    color: $error-colour;
+  }
+}
+
+.framework-declaration {
+  margin-bottom: $gutter;
+
+  @include media(tablet) {
+    margin-bottom: 0;
+  }
+}

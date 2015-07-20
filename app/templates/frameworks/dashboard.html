@@ -1,5 +1,7 @@
 {% extends "_base_page.html" %}
 
+{% block page_title %}Apply to G-Cloud 7 – Digital Marketplace{% endblock %}
+
 {% block breadcrumb %}
   {%
     with items = [
@@ -9,10 +11,7 @@
       },
       {
         "link": url_for(".dashboard"),
-        "label": current_user.supplier_name,
-      },
-      {
-        "label": "Apply for G-Cloud 7"
+        "label": "Your account",
       }
     ]
   %}
@@ -21,33 +20,60 @@
 {% endblock %}
 
 {% block main_content %}
-  <div class="grid-row">
-    <div class="column-two-thirds">
-      {% with
-         heading = "Apply to G-Cloud 7"
-      %}
-        {% include "toolkit/page-heading.html" %}
-      {% endwith %}
-    </div>
-  </div>
-
   {% with
-     items = [
-      {
-        "title": "Make supplier declaration",
-        "body": "You must do this to supply services on the Digital Marketplace",
-        "link": url_for(".framework_supplier_declaration"),
-      }
-     ]
+     heading = "Apply to G-Cloud 7",
+     smaller = True,
+     with_breadcrumb = True
   %}
-    {% include "toolkit/browse-list.html" %}
+    {% include "toolkit/page-heading.html" %}
   {% endwith %}
+
+  <div class="grid-row">
+    <div class="column-two-thirds ">
+      <div class="framework-deadline">
+        <h2 id="framework-deadline">
+          Deadline 2 October 2015
+        </h2>
+        <p>
+          0 services will be submitted
+        </p>
+        <p class="framework-notification">
+          <strong>No services will be submitted if supplier declaration is incomplete</strong>
+        </p>
+      </div>
+      <div class="framework-declaration">
+        <h3 class="browse-list-item-link">
+          <a href='{{ url_for('.framework_supplier_declaration') }}'>Make supplier declaration</a>
+        </h3>
+        <p class="browse-list-item-body">
+          Legal declaration required to supply G-Cloud 7 services
+        </p>
+      </div>
+    </div>
+    <aside role="complementary" class="column-one-third framework-help">
+      <p>
+        <a href="#" class="clarification-link">Read updates or ask clarification questions</a>
+      </p>
+      {%
+        with
+        items = [
+          {
+            "file_type": "ZIP",
+            "link": "#",
+            "title": "Download supplier pack"
+          }
+        ]
+      %}
+        {% include "toolkit/documents.html" %}
+      {% endwith %}
+    </aside>
+  </div>
 
   <div class="grid-row">
     <div class="column-one-whole">
       <h2 class="summary-item-heading">Services</h2>
       <p class="summary-item-top-level-action">
-        <a href="#">Add a service</a>
+        <a href="{{ url_for('.start_new_draft_service') }}">Add a service</a>
       </p>
       <table class="summary-item-body">
         <thead></thead>

@@ -18,6 +18,8 @@
   name: Service type
   editable: true
   questions:
+    - serviceTypesIaaS
+    - serviceTypesSaaS
     - serviceTypesSCS
 -
   name: Features and benefits
